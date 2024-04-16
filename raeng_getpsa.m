@@ -37,17 +37,6 @@ switch runpar(2)
     case {5}
         nsd=3;
 end
-% switch runpar(2)
-%     case {1}
-%         nsd=1;
-%     case{2,3,4}
-%         nsd=2;
-%     case {5}
-%         nsd=3;
-% end
-
-
-
 
 data=fscanf(fid,'%f',[3*nc+nsd+6 inf]);
 fclose(fid);
