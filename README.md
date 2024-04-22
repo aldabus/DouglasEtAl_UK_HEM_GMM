@@ -44,6 +44,6 @@ T = 0.01 (PGA), 0.025, 0.05, 0.075, 0.10, 0.15, 0.20, 0.30, 0.40, 0.50, 0.75, 1.
 Although most of the codes have gone through a QA process, bugs can be present. 
 Please let us know any bugs you may find.
 
-Coefficient for the full (128-branch) model are not yet available, but we are hoping to upload these soon.
+Coefficients for the full (128-branch) model are not yet available, but we are hoping to upload these soon.
 
 
