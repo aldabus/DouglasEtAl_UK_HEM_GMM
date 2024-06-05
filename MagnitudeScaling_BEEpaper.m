@@ -17,7 +17,8 @@ for ti = 1:nT
     for ri = 1:nR
         for mi = 1:nM
             for bi = 1:numberbranch
-               PSA(ri,mi,ti,bi) = raeng_backbone_model(Mw(mi),Rjb(ri),Twanted(ti),bi,numberbranch,'reweighted')*100;
+               % PSA(ri,mi,ti,bi) = raeng_backbone_model(Mw(mi),Rjb(ri),Twanted(ti),bi,numberbranch,'reweighted')*100;
+               PSA(ri,mi,ti,bi) = DATDT24(Mw(mi),Rjb(ri),Twanted(ti),numberbranch,bi,'reweighted')*100;
             end
             PSA_f(ri,mi,ti) = PSA(ri,mi,ti,1)*0.185 + PSA(ri,mi,ti,2)*0.63 + PSA(ri,mi,ti,3)*0.185;
         end
