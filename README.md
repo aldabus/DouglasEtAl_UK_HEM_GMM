@@ -43,8 +43,8 @@ Coefficients are available for the following periods:
 T = 0.01 (PGA), 0.025, 0.05, 0.075, 0.10, 0.15, 0.20, 0.30, 0.40, 0.50, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0, 7.5, 10.0.
 
 
-#CHHEP output files
-The output files from the CHEEP calculations are provided in 'CHHEP output files'. 
+#CHEEP output files
+The output files from the CHEEP calculations are provided in 'CHEEP output files'. 
 
 A detailed description of the programe and outputs can be find at: https://pureportal.strath.ac.uk/en/datasets/cheep-composite-hybrid-equation-estimation-program
 
