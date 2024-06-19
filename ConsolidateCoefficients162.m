@@ -51,10 +51,10 @@ ri = 0;
                                 if i == 1
                                     dataout(ri,1:4) = {'162-branches',char(weightopt(wi)),branch,data(i)};
                                 elseif i == 2
-                                    if data(i) == 9999
+                                    if data(i) == 9.999
                                         dataout(ri,3+i) = {10};
                                     else
-                                        dataout(ri,3+i) = {data(i)/1000};
+                                        dataout(ri,3+i) = {data(i)};
                                     end
                                 else
                                     dataout(ri,3+i) = {data(i)};
