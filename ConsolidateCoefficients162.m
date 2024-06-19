@@ -72,7 +72,7 @@ ri = 0;
 DATDT24_Coefficients162b = array2table(dataout);
 DATDT24_Coefficients162b.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
 DATDT24_Coefficients162b.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficeints.mat'),'DATDT24_Coefficients162b','-append')
+save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients162b','-append')
 
 
 

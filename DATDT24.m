@@ -21,7 +21,7 @@ if T == 0
 end
 
 varname = ['DATDT24_Coefficients',num2str(model),'b'];
-load(strcat(cd,"\FinalCoefficients\DATDT24_Coefficeints.mat"),varname)
+load(strcat(cd,"\FinalCoefficients\DATDT24_Coefficients.mat"),varname)
 if model == 3
     DATDT24_Coefficients = DATDT24_Coefficients3b;
 elseif model == 5

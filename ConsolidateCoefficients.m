@@ -92,17 +92,17 @@ if model == 3
     DATDT24_Coefficients3b = array2table(dataout);
     DATDT24_Coefficients3b.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
     DATDT24_Coefficients3b.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save("DATDT24_Coefficeints.mat","DATDT24_Coefficients3b")
+    save("DATDT24_Coefficients.mat","DATDT24_Coefficients3b")
 elseif model == 5
     DATDT24_Coefficients5b = array2table(dataout);
     DATDT24_Coefficients5b.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
     DATDT24_Coefficients5b.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save('DATDT24_Coefficeints.mat','DATDT24_Coefficients5b','-append')
+    save('DATDT24_Coefficients.mat','DATDT24_Coefficients5b','-append')
 elseif model == 216
     DATDT24_Coefficients216b = array2table(dataout);
     DATDT24_Coefficients216b.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
     DATDT24_Coefficients216b.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save('DATDT24_Coefficeints.mat','DATDT24_Coefficients216b','-append')
+    save('DATDT24_Coefficients.mat','DATDT24_Coefficients216b','-append')
 end
 
 
