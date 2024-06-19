@@ -27,7 +27,7 @@ if model == 3
 elseif model == 5
     DATDT24_Coefficients = DATDT24_Coefficients5b;
 elseif model == 216
-    DATDT24_Coefficients = DATDT24_Coefficients216b;
+    DATDT24_Coefficients = DATDT24_Coefficients162b;
 end
 
 Widx = strcmp(DATDT24_Coefficients.("Weighting Option"),weightopt);
