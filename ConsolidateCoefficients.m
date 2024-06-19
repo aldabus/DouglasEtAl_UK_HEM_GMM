@@ -4,7 +4,11 @@ model = 5;
 weightopt = {'original','reweighted'};
 % T =0.025;
 
-directory=strcat(cd,'\FinalCoefficients\');
+if model == 3
+    directory=strcat(cd,'\FinalCoefficients\Coefficients-Rjb\3BranchModel\');
+elseif model == 5
+    directory=strcat(cd,'\FinalCoefficients\Coefficients-Rjb\5BranchModel\');
+end
 
 periods=[{'0010'},{'0025'},{'0050'},{'0075'},{'0100'},{'0150'},{'0200'},{'0300'},{'0400'},{'0500'},{'0750'},...
     {'1000'},{'1500'},{'2000'},{'3000'},{'4000'},{'5000'},{'7500'},{'9999'}];
@@ -21,6 +25,7 @@ for wi = 1:2
         for bri = 1:model
             branch = bri;
             ri = ri + 1;
+            disp(strcat(num2str(branch),'-',num2str(ri)))
             cinfile = [directory,stemcoeff,char(periods(Ti)),num2str(branch,'%1i'),'.txt'];
             % Reading in the coefficients
             fid = fopen(cinfile,'rt');
