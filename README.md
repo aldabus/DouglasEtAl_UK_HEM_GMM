@@ -3,7 +3,7 @@ This software evaluates the earthquake ground motion models, derived using the h
 
 Ground-motion models for earthquakes occurring in the United Kingdom
 
-John Douglas, Guillermo Aldama‑Bustos, Sarah Tallett‑Williams, Manuela Daví, Iain J. Tromans Bulletin of Earthquake Engineering, 2024, https://doi.org/10.1007/s10518-024-01943-8
+John Douglas, Guillermo Aldama-Bustos, Sarah Tallett-Williams, Manuela Daví, Iain J. Tromans Bulletin of Earthquake Engineering, 2024, https://doi.org/10.1007/s10518-024-01943-8
 
 
 ## Contact people
@@ -52,6 +52,6 @@ A detailed description of the programe and outputs can be find at: https://purep
 ## Notes
 Although all codes have gone through a QA process, bugs may still be present. Please let us know if you find any. We do not take any responsibility for the validity of this software.
 
-Codes for the full (162-branches) model are not yet available, but we are planning to upload these soon
+
 
 

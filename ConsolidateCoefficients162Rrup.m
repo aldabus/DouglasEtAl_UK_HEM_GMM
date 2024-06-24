@@ -4,7 +4,7 @@ model = 162;
 weightopt = {'original','reweighted'};
 wi = 1; %A single set of coefficients is available for this model and it's save as 'original'
 
-directory=strcat(cd,'\FinalCoefficients\Coefficients_Rjb\162BranchModel\');
+directory=strcat(cd,'\FinalCoefficients\Coefficients_Rrup\162BranchModel\');
 
 periods=[{'0010'},{'0025'},{'0050'},{'0075'},{'0100'},{'0150'},{'0200'},{'0300'},{'0400'},{'0500'},{'0750'},...
     {'1000'},{'1500'},{'2000'},{'3000'},{'4000'},{'5000'},{'7500'},{'9999'}];
@@ -21,7 +21,7 @@ ri = 0;
                         for qi = 1:3 %Q
                             branch = branch + 1;
                             ri = ri + 1;
-                            stemcoeff=['coeffukz',num2str(zi,'%1i'),char(periods(Ti)),num2str(sti,'%1i'),...
+                            stemcoeff=['coeffukz',num2str(zi,'%1i'),'rrup',char(periods(Ti)),num2str(sti,'%1i'),...
                                 num2str(ki,'%1i'),num2str(gi,'%1i'),num2str(qi,'%1i')];
                             cinfile = [directory,stemcoeff,'.txt'];
                             disp(strcat(num2str(ri),'-',num2str(branch),'-',stemcoeff))
@@ -69,10 +69,10 @@ ri = 0;
     end
 % end
 
-DATDT24_Coefficients162b_Rjb = array2table(dataout);
-DATDT24_Coefficients162b_Rjb.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
-DATDT24_Coefficients162b_Rjb.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients162b_Rjb','-append')
+DATDT24_Coefficients162b_Rrup = array2table(dataout);
+DATDT24_Coefficients162b_Rrup.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
+DATDT24_Coefficients162b_Rrup.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
+save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients162b_Rrup','-append')
 
 
 

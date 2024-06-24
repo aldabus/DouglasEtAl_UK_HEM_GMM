@@ -5,9 +5,9 @@ weightopt = {'original','reweighted'};
 % T =0.025;
 
 if model == 3
-    directory=strcat(cd,'\FinalCoefficients\Coefficients_Rjb\3BranchModel\');
+    directory=strcat(cd,'\FinalCoefficients\Coefficients_Rrup\3BranchModel\');
 elseif model == 5
-    directory=strcat(cd,'\FinalCoefficients\Coefficients_Rjb\5BranchModel\');
+    directory=strcat(cd,'\FinalCoefficients\Coefficients_Rrup\5BranchModel\');
 end
 
 periods=[{'0010'},{'0025'},{'0050'},{'0075'},{'0100'},{'0150'},{'0200'},{'0300'},{'0400'},{'0500'},{'0750'},...
@@ -20,7 +20,7 @@ ri = 0;
 % fid1=fopen(fout,"w");
 
 for wi = 1:2
-    stemcoeff=['coeffukboth_',num2str(model,'%1i'),'branches_',char(weightopt(wi)),'_'];
+    stemcoeff=['coeffukrrupboth_',num2str(model,'%1i'),'branches_',char(weightopt(wi)),'_'];
     for Ti = 1:length(Ts)
         for bri = 1:model
             branch = bri;
@@ -89,20 +89,20 @@ for wi = 1:2
 end
 
 if model == 3
-    DATDT24_Coefficients3b_Rjb = array2table(dataout);
-    DATDT24_Coefficients3b_Rjb.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
-    DATDT24_Coefficients3b_Rjb.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),"DATDT24_Coefficients3b_Rjb")
+    DATDT24_Coefficients3b_Rrup = array2table(dataout);
+    DATDT24_Coefficients3b_Rrup.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
+    DATDT24_Coefficients3b_Rrup.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
+    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),"DATDT24_Coefficients3b_Rrup",'-append')
 elseif model == 5
-    DATDT24_Coefficients5b_Rjb = array2table(dataout);
-    DATDT24_Coefficients5b_Rjb.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
-    DATDT24_Coefficients5b_Rjb.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients5b_Rjb','-append')
+    DATDT24_Coefficients5b_Rrup = array2table(dataout);
+    DATDT24_Coefficients5b_Rrup.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
+    DATDT24_Coefficients5b_Rrup.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
+    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients5b_Rrup','-append')
 elseif model == 216
-    DATDT24_Coefficients216b_Rjb = array2table(dataout);
-    DATDT24_Coefficients216b_Rjb.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
-    DATDT24_Coefficients216b_Rjb.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients216b_Rjb','-append')
+    DATDT24_Coefficients216b_Rrup = array2table(dataout);
+    DATDT24_Coefficients216b_Rrup.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
+    DATDT24_Coefficients216b_Rrup.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
+    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients216b_Rrup','-append')
 end
 
 

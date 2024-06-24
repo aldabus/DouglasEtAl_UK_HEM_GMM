@@ -1,4 +1,4 @@
-function acc=DATDT24(Mw,Rjb,T,model,branch,weightopt)
+function acc=DATDT24(Mw,Rjb,Rrup,T,model,branch,weightopt)
 %% Returns 5%-damped PGA and PSA predictions for the horizontal component of the ground motion in units of m/s^2
 % for the hybrid-empirical model for the UK (Douglas et al. (2024) - Ground motion models for earthquakes occurring
 % in the United Kingdom. Bulletin of Earthquake Engineering.
@@ -6,6 +6,7 @@ function acc=DATDT24(Mw,Rjb,T,model,branch,weightopt)
 %% Input data
 % Mw - Moment magnitude
 % Rjb - Joyner-and-Boore site-to-source distance definition
+% Rrup - Closest distance to the fault-rupture plane (USED ONLY when Rjb < 0)
 % T - Period in seconds. Coefficients are available for the following periods:0.01 (PGA), 0.025, 0.05, 0.075,
 %    0.10, 0.15, 0.20, 0.30, 0.40, 0.50, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0, 7.5, 10.0.
 % model - Number of branches in the selected model (e.g. 3 for the 3-branch model, or 5 for the 5-branch model)
@@ -20,14 +21,27 @@ if T == 0
     T = 0.01;
 end
 
-varname = ['DATDT24_Coefficients',num2str(model),'b'];
+if Rjb >= 0
+    R = Rjb;
+    disdef = 'Rjb';
+else
+    R = Rrup;
+    disdef = 'Rrup';
+end
+
+varname = ['DATDT24_Coefficients',num2str(model),'b_',disdef];
 load(strcat(cd,"\FinalCoefficients\DATDT24_Coefficients.mat"),varname)
 if model == 3
-    DATDT24_Coefficients = DATDT24_Coefficients3b;
+    DATDT24_Coefficients = eval(varname);
 elseif model == 5
-    DATDT24_Coefficients = DATDT24_Coefficients5b;
+    DATDT24_Coefficients = eval(varname);
 elseif model == 216
-    DATDT24_Coefficients = DATDT24_Coefficients162b;
+    DATDT24_Coefficients = eval(varname);
+    if strcmp(weightopt,"reweighted")
+        weightopt = "original";
+        disp("The same set of coefficients are used for the 'original' and 'reweighted' options" + ...
+            " of the 162-branch model")
+    end
 end
 
 Widx = strcmp(DATDT24_Coefficients.("Weighting Option"),weightopt);
@@ -42,5 +56,5 @@ coeff = DATDT24_CoefficientsAux(idx,:);
 
 b = cell2mat([coeff.b1,coeff.b2,coeff.b3,coeff.b4,coeff.b5,coeff.b6,coeff.b7,coeff.b8,coeff.b9,coeff.b10]);
 func1 = @attfuncampbell;
-[acc,~] = feval(func1,[Mw,Rjb],b);
+[acc,~] = feval(func1,[Mw,R],b);
 acc = exp(acc);
