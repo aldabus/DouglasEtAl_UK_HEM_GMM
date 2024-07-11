@@ -20,9 +20,10 @@ Iain Tromans (iain.tromans@jacobs.com)
 
 ## Features and Functionality
 
-All scripts currently provided are coded in Matlab, but we will be producing equivalent codes in Python and Fortran in the near future.
+All versions of the model are currently coded in Matlab and Excel, but we will be producing equivalent codes in Python and Fortran in the near future.
 
-#DATDT24 script
+
+#DATDT24.m (Matlab script) and DATDT24_ModelEvaluation.xlsx (Excel file)
 
 Returns pseudo-spectral accelerations for the Douglas et al. (2024) UK HEM model given the following input parameters:
 
@@ -41,6 +42,13 @@ weightopt - "original" for the default (original) weights in the logic tree, or 
 Coefficients are available for the following periods:
 
 T = 0.01 (PGA), 0.025, 0.05, 0.075, 0.10, 0.15, 0.20, 0.30, 0.40, 0.50, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0, 7.5, 10.0.
+
+
+#branchweight.m
+
+Returns the weight to be used in the logic tree for the selected branch and model. 
+
+This is particularly useful when combining results from the 162-branch model (either ground-motion predictions and hazard estimates) in a logic tree framework.
 
 
 #CHEEP output files
