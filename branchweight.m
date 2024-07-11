@@ -25,7 +25,7 @@ switch brn
                 for zi = 1:2 %ZTOR
                     for sti = 1:3 %Stress drop
                         for ki = 1:3 %kappa
-                            for gi = 1:3 %geometric mean
+                            for gi = 1:3 %geometric spreading
                                 for qi = 1:3 %Q
                                     branch(i) = i;
                                     weight(i) = ztor(zi) * sd(sti) * k0(ki) * gs(gi) * qw(qi);

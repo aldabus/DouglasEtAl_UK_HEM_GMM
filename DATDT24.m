@@ -35,7 +35,7 @@ if model == 3
     DATDT24_Coefficients = eval(varname);
 elseif model == 5
     DATDT24_Coefficients = eval(varname);
-elseif model == 216
+elseif model == 162
     DATDT24_Coefficients = eval(varname);
     if strcmp(weightopt,"reweighted")
         weightopt = "original";
