@@ -48,7 +48,7 @@ T = 0.01 (PGA), 0.025, 0.05, 0.075, 0.10, 0.15, 0.20, 0.30, 0.40, 0.50, 0.75, 1.
 
 Returns the weight to be used in the logic tree for the selected branch and model. 
 
-This is particularly useful when combining results from the 162-branch model (either ground-motion predictions and hazard estimates) in a logic tree framework.
+This is particularly useful when combining results from the 162-branch model (either ground-motion predictions or hazard estimates) in a logic tree framework.
 
 
 #CHEEP output files
