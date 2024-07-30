@@ -21,8 +21,14 @@ ri = 0;
                         for qi = 1:3 %Q
                             branch = branch + 1;
                             ri = ri + 1;
-                            stemcoeff=['coeffukz',num2str(zi,'%1i'),char(periods(Ti)),num2str(sti,'%1i'),...
-                                num2str(ki,'%1i'),num2str(gi,'%1i'),num2str(qi,'%1i')];
+                            switch zi
+                                case 1
+                                    stemcoeff=['coeffukz',num2str(zi,'%1i'),char(periods(Ti)),num2str(sti,'%1i'),...
+                                        num2str(ki,'%1i'),num2str(gi,'%1i'),num2str(qi,'%1i')];
+                                case 2
+                                    stemcoeff=['coeffukz',num2str(zi,'%1i'),'rjb',char(periods(Ti)),num2str(sti,'%1i'),...
+                                        num2str(ki,'%1i'),num2str(gi,'%1i'),num2str(qi,'%1i')];
+                            end
                             cinfile = [directory,stemcoeff,'.txt'];
                             disp(strcat(num2str(ri),'-',num2str(branch),'-',stemcoeff))
                             % Reading in the coefficients
