@@ -30,7 +30,8 @@ else
 end
 
 varname = ['DATDT24_Coefficients',num2str(model),'b_',disdef];
-load(strcat(cd,"\FinalCoefficients\DATDT24_Coefficients.mat"),varname)
+% load(strcat(cd,"\FinalCoefficients\DATDT24_Coefficients.mat"),varname)
+load("DATDT24_Coefficients.mat",varname)
 if model == 3
     DATDT24_Coefficients = eval(varname);
 elseif model == 5
