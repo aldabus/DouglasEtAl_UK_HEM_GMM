@@ -29,33 +29,37 @@ else
     disdef = 'Rrup';
 end
 
-varname = ['DATDT24_Coefficients',num2str(model),'b_',disdef];
-% load(strcat(cd,"\FinalCoefficients\DATDT24_Coefficients.mat"),varname)
-load("DATDT24_Coefficients.mat",varname)
-if model == 3
-    DATDT24_Coefficients = eval(varname);
-elseif model == 5
-    DATDT24_Coefficients = eval(varname);
-elseif model == 162
-    DATDT24_Coefficients = eval(varname);
-    if strcmp(weightopt,"reweighted")
-        weightopt = "original";
-        disp("The same set of coefficients are used for the 'original' and 'reweighted' options" + ...
-            " of the 162-branch model")
-    end
+persistent AllCoeffs
+
+if isempty(AllCoeffs)
+    AllCoeffs = load("DATDT24_Coefficients.mat");
+end
+
+varname = sprintf('DATDT24_Coefficients%db_%s', model, disdef);
+DATDT24_Coefficients = AllCoeffs.(varname);
+
+if model == 162 && strcmp(weightopt,"reweighted")
+    weightopt = "original";
+    disp("The same set of coefficients are used for the 'original' and" + ...
+        " 'reweighted' options of the 162-branch model")
 end
 
 Widx = strcmp(DATDT24_Coefficients.("Weighting Option"),weightopt);
 DATDT24_CoefficientsAux = DATDT24_Coefficients(Widx,:);
-idx = find(cell2mat(DATDT24_CoefficientsAux.("Period (s)"))==T...
-    & cell2mat(DATDT24_CoefficientsAux.Branch)==branch);
+
+
+periods = [DATDT24_CoefficientsAux.("Period (s)"){:}];
+branches = [DATDT24_CoefficientsAux.Branch{:}];
+idx = find(periods == T & branches == branch);
+
 if isempty(idx)
     error('No coefficients available for the desired period')
 end
 
 coeff = DATDT24_CoefficientsAux(idx,:);
 
-b = cell2mat([coeff.b1,coeff.b2,coeff.b3,coeff.b4,coeff.b5,coeff.b6,coeff.b7,coeff.b8,coeff.b9,coeff.b10]);
-func1 = @attfuncampbell;
-[acc,~] = feval(func1,[Mw,R],b);
+b = cell2mat([coeff.b1,coeff.b2,coeff.b3,coeff.b4,coeff.b5,coeff.b6,...
+    coeff.b7,coeff.b8,coeff.b9,coeff.b10]);
+
+acc = attfuncampbell([Mw, R], b);
 acc = exp(acc);
