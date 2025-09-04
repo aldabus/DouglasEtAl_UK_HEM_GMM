@@ -1,0 +1,34 @@
+In this folder I tried to reproduce the 3- and 5-branch models.
+
+For doing this, I used the following files provided by JD:
+
+	raeng_uk_backbone_sampler.m
+		Resamples the data from the CHEEP calculations
+		I made few changes but it does the same as the original code
+	raeng_regressionuk_resampled.m
+		This is just a batch file to run the regression analysis
+		Again, I made few small changes, but it does the same as the original
+	raeng_regressionhybriduk_resampled.m
+		Runs the regression analysis
+		I made no changes to this script
+		
+
+I managed to reproduce the coefficients for the original models within a small marging of error.
+However, I found the following errors in the original models:
+
+	• Rjb model
+		○ Most likely only ZTor1 results were used for the resampling, and therefore, for the derivation of the coefficients for the 3 and 5-branch models
+		  I discussed the issue with JD and he confirmed that this may be the case
+		○ For the 3-branch model, original weights, it seems that the percentiles used in the calculations were: 0.05, 0.50 and 0.97, rather than 0.05, 0.50 and 0.95
+		○ Even when using the 0.05, 0.50 and 0.97 percentiles, some small differences on the resampled data (<2%) were observed in few mag-dist scenarios
+		○ For the 5-branch model… I didn't finish checking this model
+	• Rrup model
+		○ Most likely only ZTor1 results were used for the resampling, and therefore, for the derivation of the coefficients for the 3 and 5-branch models
+		  I discussed the issue with JD and he confirmed that this may be the case
+		○ For the 3-branch model the percentiles used (i.e. 0.05, 0.50 and 0.95) seem to be correct but still some small differences were observed on the resampled data (<2%) in few mag-dist scenarios
+		○ For the 5-branch model… I didn't finish checking this model
+
+
+
+This erros implies that the published model predict slightly higher ground motion than it should as the scenarios for ZTor2 (i.e. the deeper ZTor model) was ommited
+Additionally, Branch 3 of the Rjb 3-branch model, original weights, is higher than it should be, up to 19% for some structural periods
