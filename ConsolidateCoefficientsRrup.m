@@ -1,23 +1,19 @@
 
 clear variables
-model = 5;
-weightopt = {'original','reweighted'};
-% T =0.025;
+format long
+model = 3;
+weightopt = {'original', 'reweighted'};
 
 if model == 3
-    directory=strcat(cd,'\FinalCoefficients\Coefficients_Rrup\3BranchModel\');
+    directory = fullfile(cd,'FinalCoefficients\Coefficients_Rrup\3BranchModel\');
 elseif model == 5
-    directory=strcat(cd,'\FinalCoefficients\Coefficients_Rrup\5BranchModel\');
+    directory = fullfile(cd,'FinalCoefficients\Coefficients_Rrup\5BranchModel\');
 end
 
 periods=[{'0010'},{'0025'},{'0050'},{'0075'},{'0100'},{'0150'},{'0200'},{'0300'},{'0400'},{'0500'},{'0750'},...
     {'1000'},{'1500'},{'2000'},{'3000'},{'4000'},{'5000'},{'7500'},{'9999'}];
 Ts=[0.01,0.025,0.05,0.075,0.10,0.15,0.20,0.30,0.40,0.50,0.75,1.0,1.5,2.0,3.0,4.0,5.0,7.5,10];
 ri = 0;
-% period=Ts==T;
-
-
-% fid1=fopen(fout,"w");
 
 for wi = 1:2
     stemcoeff=['coeffukrrupboth_',num2str(model,'%1i'),'branches_',char(weightopt(wi)),'_'];
@@ -88,21 +84,28 @@ for wi = 1:2
     end
 end
 
+fname = fullfile(cd, 'DATDT24_Coefficients.mat');
+if isfile(fname)
+    app = '-append';
+else
+    app = '';
+end
+
 if model == 3
     DATDT24_Coefficients3b_Rrup = array2table(dataout);
     DATDT24_Coefficients3b_Rrup.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
     DATDT24_Coefficients3b_Rrup.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),"DATDT24_Coefficients3b_Rrup",'-append')
+    save(strcat(cd,'\DATDT24_Coefficients.mat'),"DATDT24_Coefficients3b_Rrup",app)
 elseif model == 5
     DATDT24_Coefficients5b_Rrup = array2table(dataout);
     DATDT24_Coefficients5b_Rrup.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
     DATDT24_Coefficients5b_Rrup.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients5b_Rrup','-append')
+    save(strcat(cd,'\DATDT24_Coefficients.mat'),'DATDT24_Coefficients5b_Rrup',app)
 elseif model == 216
     DATDT24_Coefficients216b_Rrup = array2table(dataout);
     DATDT24_Coefficients216b_Rrup.Properties.VariableNames=['Model','Weighting Option','Branch','Damping (%)','Period (s)',heading(3:end)'];
     DATDT24_Coefficients216b_Rrup.Properties.VariableUnits=["","","","%","s",'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-    save(strcat(cd,'\FinalCoefficients\DATDT24_Coefficients.mat'),'DATDT24_Coefficients216b_Rrup','-append')
+    save(strcat(cd,'\DATDT24_Coefficients.mat'),'DATDT24_Coefficients216b_Rrup',app)
 end
 
 
